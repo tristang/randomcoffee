@@ -9,7 +9,15 @@ class UsersController < ApplicationController
   end
 
   def create
-    User.create(first_name: params[:user][:first_name], last_name: params[:user][:last_name], email: params[:user][:email])
-    redirect_to users_path 
+    @user = User.new(first_name: params[:user][:first_name], last_name: params[:user][:last_name], email: params[:user][:email])
+    if @user.save
+      redirect_to user_registered_path(@user)
+    else
+      render :new
+    end
+  end
+
+  def registered
+  @user = User.find(params[:user_id])
   end
 end

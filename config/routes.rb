@@ -6,4 +6,7 @@ Rails.application.routes.draw do
   resources :users do
     get :registered
   end
+
+  resources :departments
+
 end

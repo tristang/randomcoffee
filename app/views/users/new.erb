@@ -20,7 +20,7 @@
 
       <div class='form-group'>
         <%= f.label :department %>
-        <%= f.text_field :email, class: 'form-control' %>
+        <%= f.select :department, options_for_select(Department.all.map{|d| [d.name, d.id] }), class: 'form-control' %>
       </div>
 
       <%= f.submit 'Add me', class: 'btn btn-info btn-lg' %>

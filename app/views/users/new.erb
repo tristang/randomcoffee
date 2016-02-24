@@ -1,7 +1,8 @@
 <div class="row">
-  <div class='col-md-4'>
-    <p> Please enter your details in the below form:</p>
 
+  <div class='col-md-5'>
+    <p class="lead">Register to receive random acts of coffee</p>
+    <hr />
     <%= form_for(@user) do |f| %>
       <div class='form-group'>
         <%= f.label :first_name %>
@@ -20,7 +21,7 @@
 
       <div class='form-group'>
         <%= f.label :department %>
-        <%= f.select :department, options_for_select(Department.all.map{|d| [d.name, d.id] }), class: 'form-control' %>
+        <%= f.select :department, options_for_select(Department.all.map{|d| [d.name, d.id] }), { include_blank: true }, { class: 'form-control' } %>
       </div>
 
       <%= f.submit 'Add me', class: 'btn btn-info btn-lg' %>

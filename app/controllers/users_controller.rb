@@ -17,13 +17,12 @@ class UsersController < ApplicationController
     )
 
     if @user.save
-      redirect_to user_registered_path(@user)
+      redirect_to registered_users_path
     else
       render :new
     end
   end
 
   def registered
-  @user = User.find(params[:user_id])
   end
 end

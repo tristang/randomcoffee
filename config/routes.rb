@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   get '/faq', to: "site#faq"
 
   resources :users do
-    get :registered
+    
+    collection do
+      get :registered
+    end
   end
 
   resources :departments

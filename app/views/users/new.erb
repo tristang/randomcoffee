@@ -1,16 +1,24 @@
-<p> Please enter your details in the below form:</p>
+<div class="row">
+  <div class='col-md-4'>
+    <p> Please enter your details in the below form:</p>
 
-<%= form_for(@user) do |f| %>
+    <%= form_for(@user) do |f| %>
+      <div class='form-group'>
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name, class: 'form-control' %>
+      </div>
 
-<%= f.label :first_name %>
-<%= f.text_field :first_name %>
-<br />
-<%= f.label :last_name %>
-<%= f.text_field :last_name %>
-<br />
-<%= f.label :email %>
-<%= f.text_field :email %>
-<br />
-<%= f.submit 'Add me' %>
+      <div class='form-group'>
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name, class: 'form-control' %>
+      </div>
+      <div class='form-group'>
+        <%= f.label :email %>
+        <%= f.text_field :email, class: 'form-control' %>
+      </div>
+      <%= f.submit 'Add me', class: 'btn btn-info btn-lg' %>
 
-<% end %>
+    <% end %>
+
+  </div>
+</div>

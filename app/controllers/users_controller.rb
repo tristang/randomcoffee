@@ -13,8 +13,9 @@ class UsersController < ApplicationController
       first_name: params[:user][:first_name],
       last_name: params[:user][:last_name],
       email: params[:user][:email],
-      department_id: params[:user][:department]
+      department_id: params[:user][:department_id]
     )
+
     if @user.save
       redirect_to user_registered_path(@user)
     else

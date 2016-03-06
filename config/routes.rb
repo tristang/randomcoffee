@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get '/faq', to: "site#faq"
 
   resources :users do
-    
+
     collection do
       get :registered
     end
@@ -12,4 +12,5 @@ Rails.application.routes.draw do
 
   resources :departments
 
+  get '/admin/users', to: "admin#users"
 end

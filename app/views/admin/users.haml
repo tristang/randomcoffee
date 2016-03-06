@@ -1,0 +1,6 @@
+%p There are currently #{@user_list.count} users
+
+%p This is a full list of users currently signed up to RAOC
+
+- @user_list.each do |user_object|
+  %p #{user_object.first_name} #{user_object.last_name}

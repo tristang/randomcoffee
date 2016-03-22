@@ -12,5 +12,9 @@ Rails.application.routes.draw do
 
   resources :departments
 
-  get '/admin/users', to: "admin#users"
+  # Admin nest
+  namespace :admin do
+    resources :users
+  end
+
 end

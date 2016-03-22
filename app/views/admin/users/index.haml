@@ -7,8 +7,10 @@
     %th First name
     %th Last name
     %th Email
+    %th Action
   - @user_list.each do |user_object|
     %tr
       %td #{user_object.first_name}
       %td #{user_object.last_name}
       %td #{user_object.email}
+      %td #{ link_to("edit", edit_admin_user_path(user_object)) }

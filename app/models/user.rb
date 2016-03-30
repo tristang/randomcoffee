@@ -5,4 +5,18 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true
   validates :email, presence: true
   validates :department, presence: true
+
+  def mailbox
+    if self.email
+      return self.email.gsub('@boroondara.vic.gov.au', '')
+    end
+  end
+
+  def mailbox=(mailbox_name)
+    if mailbox_name.present?
+      self.email = mailbox_name + "@boroondara.vic.gov.au"
+    else
+      self.email = nil
+    end
+  end
 end

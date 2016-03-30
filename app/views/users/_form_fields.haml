@@ -13,8 +13,10 @@
   = f.label :last_name
   = f.text_field :last_name, class: 'form-control'
 .form-group
-  = f.label :email
-  = f.text_field :email, class: 'form-control'
+  = f.label :mailbox, "Email"
+  .input-group
+    = f.text_field :mailbox, class: 'form-control'
+    %span.input-group-addon @boroondara.vic.gov.au
 .form-group
   = f.label :department_id
   = f.select :department_id, Department.all.map{|d| [d.name, d.id] }, { include_blank: true }, { class: 'form-control' }

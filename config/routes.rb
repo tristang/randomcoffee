@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   # Admin nest
   namespace :admin do
     resources :users
+    resources :meetups
   end
 
 end

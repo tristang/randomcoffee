@@ -1,0 +1,13 @@
+= link_to admin_meetups_path do
+  &larr; Back to list of meetups
+
+%hr
+
+%p This is a particular meetup.
+
+%p It was created on #{@meetup.created_at}
+
+- if @meetup.emails_sent_at
+  %p The emails were sent at #{@meetup.emails_sent_at}
+- else
+  %p The emails have not been sent yet.

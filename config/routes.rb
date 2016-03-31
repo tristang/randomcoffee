@@ -9,7 +9,9 @@ Rails.application.routes.draw do
       get :registered
     end
   end
-  
+
+
+  get '/admin', to: "admin#index"
   # Admin nest
   namespace :admin do
     resources :departments

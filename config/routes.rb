@@ -9,11 +9,10 @@ Rails.application.routes.draw do
       get :registered
     end
   end
-
-  resources :departments
-
+  
   # Admin nest
   namespace :admin do
+    resources :departments
     resources :users
     resources :meetups
   end

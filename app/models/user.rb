@@ -6,6 +6,11 @@ class User < ActiveRecord::Base
   validates :email, presence: true
   validates :department, presence: true
 
+  def full_name
+    first_name + " " + last_name
+
+  end
+
   def mailbox
     if self.email
       return self.email.gsub('@boroondara.vic.gov.au', '')

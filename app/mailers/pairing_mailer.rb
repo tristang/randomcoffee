@@ -1,0 +1,3 @@
+class PairingMailer < ApplicationMailer
+  
+end

@@ -29,6 +29,18 @@
   </div><!-- /.container-fluid -->
 </nav>
 
+<%- if flash[:notice].present? %>
+  <div class="flash notice">
+    <%= flash[:notice] %>
+  </div>
+<%- end %>
+
+<%- if flash[:error].present? %>
+  <div class="flash error">
+    <%= flash[:error] %>
+  </div>
+<%- end %>
+
 <div class="site-wrap">
   <div class="container">
     <%= yield %>

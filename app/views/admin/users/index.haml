@@ -13,4 +13,7 @@
       %td #{user_object.first_name}
       %td #{user_object.last_name}
       %td #{user_object.email}
-      %td #{ link_to("edit", edit_admin_user_path(user_object)) }
+      %td
+        = link_to("edit", edit_admin_user_path(user_object))
+        &bull;
+        = link_to("delete", admin_user_path(user_object), method: :delete, data: { confirm: "Are you absolutely sure you want to permanently remove #{user_object.full_name}?" })

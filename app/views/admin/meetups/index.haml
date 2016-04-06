@@ -1,3 +1,13 @@
-This page shows the list of meetups
+%h3 Time for the next meetup?
+%hr
 
-= button_to "Make a new meetup", admin_meetups_path, method: :post
+= button_to "Make a new meetup", admin_meetups_path, method: :post, class: 'btn btn-info btn-lg'
+
+%br
+%br
+
+%h3 Past meetups
+%hr
+%ul
+  - @meetups.each do |meetup|
+    %li #{time_ago_in_words(meetup.created_at)} ago - #{meetup.pairings.count} pairs - #{link_to 'view', admin_meetup_path(meetup)}

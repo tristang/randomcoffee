@@ -1,11 +1,20 @@
-%p Welcome to Random Acts of Coffee!
+%p Hi #{@recipient.first_name},
 
-%p Your coffee partner for this month is: NAME
+%p It's time for Random Acts of Coffee!
 
-%p Please contact FIRST_NAME to arrange a meeting sometime this month.
+%p
+  Your coffee partner for this month is
+  %b #{@partner.full_name}
+
+%p
+  #{@partner.first_name + (@partner.first_name.last.downcase == 's' ? "'" : "'s")} email address is
+  = mail_to @partner.email
+  and they work in the #{@partner.department.name} department.
+  Please contact #{@partner.first_name} to arrange a meeting sometime this month.
+
 
 %p Don't forget to collect your Random Acts of Coffee card from Innovation and Business Transformation to receive a free coffee and go into the draw for some great prizes at the end of the year.  Just make sure that you get your coffee partner to sign your card when you meet.
 
-%p For more information go to BAZ and search 'coffee'
+%hr
 
-%p COFFEE - CONVERSATIONS - COLLABORATION
+%p For more information go to BAZ and search 'coffee'

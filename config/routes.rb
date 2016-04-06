@@ -16,7 +16,11 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :departments
     resources :users
-    resources :meetups
+    resources :meetups do
+      member do
+        post :send_emails
+      end
+    end
   end
 
 end

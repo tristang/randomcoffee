@@ -14,5 +14,8 @@
     The emails have not been sent yet.
     = button_to 'Send emails now', send_emails_admin_meetup_path(@meetup), method: :post
 
-- @meetup.pairings.each do |pairing|
-  %p #{pairing.user_1.full_name} is meeting with #{pairing.user_2 ? pairing.user_2.full_name : 'nobody'}
+%h3 Pairings
+
+%ul
+  - @meetup.pairings.each do |pairing|
+    %li #{pairing.user_1.full_name} is meeting with #{pairing.user_2 ? pairing.user_2.full_name : 'nobody'}

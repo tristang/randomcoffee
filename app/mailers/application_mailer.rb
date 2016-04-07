@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "kate.brewster@boroondara.vic.gov.au"
+  default from: "Kate Brewster <kate.brewster@boroondara.vic.gov.au>"
   layout 'mailer'
 end

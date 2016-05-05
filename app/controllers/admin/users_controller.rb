@@ -1,6 +1,7 @@
 class Admin::UsersController < AdminController
   def index
-    @user_list = User.all.order(first_name: :asc)
+    @active_users = User.active.order(first_name: :asc)
+    @inactive_users = User.inactive.order(first_name: :asc)
   end
 
   def edit
@@ -19,7 +20,7 @@ class Admin::UsersController < AdminController
   def destroy
     @user = User.find(params[:id])
     if Pairing.where(user_1: @user).any? || Pairing.where(user_2: @user).any?
-      return redirect_to :back, flash: { error: "Can't delete that user because they've already been paired!" }
+      return redirect_to :back, flash: { error: "Can't delete that user because they've already been paired! You may inactive them instead." }
     end
 
     if @user.destroy
@@ -27,6 +28,18 @@ class Admin::UsersController < AdminController
     else
       redirect_to :back
     end
+  end
+
+  def inacivate
+    @user = User.find(params[:id])
+    @user.update_attributes(inactive: true)
+    redirect_to :back, notice: "Inactivated #{@user.full_name}. They will not be paired in the future."
+  end
+
+  def acivate
+    @user = User.find(params[:id])
+    @user.update_attributes(inactive: false)
+    redirect_to :back, notice: "Activated #{@user.full_name}. They are now eligible for pairing."
   end
 
   private

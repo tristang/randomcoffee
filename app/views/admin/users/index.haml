@@ -1,19 +1,38 @@
-%p There are currently #{@user_list.count} users
+%p There are currently #{@active_users.count} active users.
 
-%p This is a full list of users currently signed up to RAOC
-
+%h3 Active users
 %table.table.table-striped
   %tr
     %th First name
     %th Last name
     %th Email
     %th Action
-  - @user_list.each do |user_object|
+  - @active_users.each do |user|
     %tr
-      %td #{user_object.first_name}
-      %td #{user_object.last_name}
-      %td #{user_object.email}
+      %td #{user.first_name}
+      %td #{user.last_name}
+      %td #{user.email}
       %td
-        = link_to("edit", edit_admin_user_path(user_object))
+        = link_to("edit", edit_admin_user_path(user))
         &bull;
-        = link_to("delete", admin_user_path(user_object), method: :delete, data: { confirm: "Are you absolutely sure you want to permanently remove #{user_object.full_name}?" })
+        = link_to("delete", admin_user_path(user), method: :delete, data: { confirm: "Are you absolutely sure you want to permanently remove #{user.full_name}?" })
+        &bull;
+        = link_to 'make inactive', inacivate_admin_user_path(user), method: :put
+
+%br
+%hr
+%br
+
+%h3 Inactive users
+%table.table.table-striped
+  %tr
+    %th First name
+    %th Last name
+    %th Email
+    %th Action
+  - @inactive_users.each do |user|
+    %tr
+      %td #{user.first_name}
+      %td #{user.last_name}
+      %td #{user.email}
+      %td= link_to 'make active', acivate_admin_user_path(user), method: :put

@@ -15,7 +15,12 @@ Rails.application.routes.draw do
   # Admin nest
   namespace :admin do
     resources :departments
-    resources :users
+    resources :users do
+      member do
+        put :acivate
+        put :inacivate
+      end
+    end
     resources :meetups do
       member do
         post :send_emails

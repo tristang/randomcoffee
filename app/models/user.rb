@@ -6,9 +6,11 @@ class User < ActiveRecord::Base
   validates :email, presence: true
   validates :department, presence: true
 
+  scope :active, -> { where(inactive: false) }
+  scope :inactive, -> { where(inactive: true) }
+
   def full_name
     first_name + " " + last_name
-
   end
 
   def mailbox

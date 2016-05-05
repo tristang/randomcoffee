@@ -16,6 +16,11 @@
 
 %h3 Pairings
 
-%ul
-  - @meetup.pairings.each do |pairing|
-    %li #{pairing.user_1.full_name} is meeting with #{pairing.user_2 ? pairing.user_2.full_name : 'nobody'}
+%table.table.table-striped
+  - @meetup.pairings.each_with_index do |pairing, index|
+    %tr
+      %td #{index + 1}
+      %td #{pairing.user_1.full_name}
+      %td #{pairing.user_2 ? pairing.user_2.full_name : 'nobody'}
+      %td
+        -# TODO: Email sent

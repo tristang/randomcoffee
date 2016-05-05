@@ -7,7 +7,7 @@ class Admin::MeetupsController < AdminController
     meetup = Meetup.new
     meetup.save
 
-    all_possible_pairings = User.order(id: :asc).ids.combination(2).to_a
+    all_possible_pairings = User.active.order(id: :asc).ids.combination(2).to_a
     all_past_pairings = Pairing.all.pluck(:user_1_id, :user_2_id)
     viable_pairings = (all_possible_pairings - all_past_pairings).flatten
 

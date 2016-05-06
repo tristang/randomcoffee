@@ -37,7 +37,10 @@ class Admin::MeetupsController < AdminController
     meetup = Meetup.find(params[:id])
 
     # Tell each of the users in each pairing that they're meeting with the other
-    MeetupMailerJob.perform_later(meetup)
+    meetup.pairings.each_with_index do |pairing, index|
+      wait = (index * 5).seconds
+      PairingMailerJob.perform_in(wait, pairing)
+    end
 
     meetup.update_attribute(:emails_sent_at, Time.now)
     redirect_to(admin_meetup_path(meetup))

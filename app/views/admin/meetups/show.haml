@@ -22,5 +22,9 @@
       %td #{index + 1}
       %td #{pairing.user_1.full_name}
       %td #{pairing.user_2 ? pairing.user_2.full_name : 'nobody'}
-      %td
-        -# TODO: Email sent
+      %td 
+        - if pairing.emails_sent_at.present? 
+          &#10004;
+        - elsif @meetup.emails_sent_at.present?
+          pending
+

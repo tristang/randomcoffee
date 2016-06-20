@@ -38,7 +38,7 @@ class Admin::MeetupsController < AdminController
 
     # Tell each of the users in each pairing that they're meeting with the other
     meetup.pairings.each_with_index do |pairing, index|
-      wait = (index * 5).seconds
+      wait = (index * 10).seconds
       PairingMailerJob.perform_in(wait, pairing)
     end
 

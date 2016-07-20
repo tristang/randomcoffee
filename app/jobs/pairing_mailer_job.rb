@@ -1,7 +1,11 @@
 class PairingMailerJob 
   include SuckerPunch::Job
-  
+
   def perform(pairing)
+    # Don't send if alreayd sent. This is necessarry on second attemps when there
+    # was a problem on the first attempt.
+    return if pairing.emails_sent_at.present?
+
     # Mark the pairing
     pairing.update_columns(emails_sent_at: Time.now)
 

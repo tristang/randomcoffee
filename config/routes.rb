@@ -1,17 +1,15 @@
 Rails.application.routes.draw do
-
   root 'site#index'
-  get '/faq', to: "site#faq"
+  get '/home', to: 'site#home'
+  get '/faq', to: 'site#faq'
 
   resources :users do
-
     collection do
       get :registered
     end
   end
 
-
-  get '/admin', to: "admin#index"
+  get '/admin', to: 'admin#index'
   # Admin nest
   namespace :admin do
     resources :departments
@@ -27,5 +25,4 @@ Rails.application.routes.draw do
       end
     end
   end
-
 end

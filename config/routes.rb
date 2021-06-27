@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   root 'site#index'
   get '/home', to: 'site#home'
-  get '/faq', to: 'site#faq'
 
   resources :users do
     collection do

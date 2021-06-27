@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Randomcoffee</title>
+  <title>Random acts of coffee</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -12,17 +12,14 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Random Acts of Coffee</a>
+      <a class="navbar-brand" href="/">Random acts of coffee</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="<%= 'active' if current_page?(new_user_path) %>">
-          <%= link_to 'Sign up', new_user_path %>
-        </li>
-        <li class="<%= 'active' if current_page?(faq_path) %>">
-          <%= link_to 'FAQ', faq_path %>
+          <%= link_to 'Join', new_user_path %>
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->

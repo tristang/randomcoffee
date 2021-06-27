@@ -1,8 +1,8 @@
-%p Enter department details in the below form:
+.row
+  .col-md-5
+    %p.lead Add a new department
+    %hr
+    = form_for(@department, url: admin_departments_path, method: :post) do |f|
+      = render partial: 'form_fields', locals: { f: f }
 
-= form_for(@department, url: admin_departments_path, method: :post) do |f|
-  .form-group
-    = f.label :name
-    = f.text_field :name
-
-  = f.submit 'Add'
+      = f.submit 'Add department', class: 'btn btn-info'

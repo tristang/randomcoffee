@@ -1,7 +1,7 @@
 - if user.errors.any?
   #error_explanation
-    %h3
-      Uh oh… #{pluralize(user.errors.count, "problems")} need your attention.
+    %h4
+      #{pluralize(user.errors.count, "problems")} need your attention:
     %ul
       - user.errors.full_messages.each do |msg|
         %li= msg
@@ -16,7 +16,7 @@
   = f.label :mailbox, "Email"
   .input-group
     = f.text_field :mailbox, class: 'form-control'
-    %span.input-group-addon @boroondara.vic.gov.au
+    %span.input-group-addon= User::EMAIL_DOMAIN
 .form-group
   = f.label :department_id
   = f.select :department_id, Department.all.map{|d| [d.name, d.id] }, { include_blank: true }, { class: 'form-control' }

@@ -11,8 +11,13 @@
  * file per style scope.
  *
  *= require_tree .
- *= require_self
  *= require 'bootstrap'
  *= require 'bootstrap-theme'
  *= require 'layout'
+ *= require_self
  */
+
+
+p { 
+  margin: 0 0 1.5em 0;
+}

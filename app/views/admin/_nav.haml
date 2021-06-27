@@ -1,0 +1,6 @@
+%div
+  = link_to_unless_current('Admin', admin_path)
+  - if local_assigns[:current_page].present?
+    = " / " + current_page
+
+%hr

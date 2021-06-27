@@ -14,7 +14,7 @@
 - else
   %p
     The emails have not been sent yet.
-    = button_to 'Send emails now', send_emails_admin_meetup_path(@meetup), method: :post
+    = button_to 'Send emails now', send_emails_admin_meetup_path(@meetup), method: :post, class: 'btn btn-danger'
 
 %hr
 

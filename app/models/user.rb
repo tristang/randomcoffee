@@ -3,11 +3,16 @@ class User < ActiveRecord::Base
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :email, presence: true
+  validates :email,
+    presence: true,
+    format: { with: /\A([^@]+)@([^@]+)\z/, message: "isn't a valid email address", if: Proc.new { |u| u.email.present? } },
+    uniqueness: { case_sensitive: false }
   validates :department, presence: true
 
   scope :active, -> { where(inactive: false) }
   scope :inactive, -> { where(inactive: true) }
+
+  EMAIL_DOMAIN = '@myob.com'.freeze
 
   def full_name
     first_name + " " + last_name
@@ -15,13 +20,13 @@ class User < ActiveRecord::Base
 
   def mailbox
     if self.email
-      return self.email.gsub('@boroondara.vic.gov.au', '')
+      return self.email.gsub(EMAIL_DOMAIN, '')
     end
   end
 
   def mailbox=(mailbox_name)
     if mailbox_name.present?
-      self.email = mailbox_name + "@boroondara.vic.gov.au"
+      self.email = mailbox_name + EMAIL_DOMAIN
     else
       self.email = nil
     end

@@ -9,19 +9,21 @@ class User < ActiveRecord::Base
   scope :active, -> { where(inactive: false) }
   scope :inactive, -> { where(inactive: true) }
 
+  EMAIL_DOMAIN = '@myob.com'.freeze
+
   def full_name
     first_name + " " + last_name
   end
 
   def mailbox
     if self.email
-      return self.email.gsub('@boroondara.vic.gov.au', '')
+      return self.email.gsub(EMAIL_DOMAIN, '')
     end
   end
 
   def mailbox=(mailbox_name)
     if mailbox_name.present?
-      self.email = mailbox_name + "@boroondara.vic.gov.au"
+      self.email = mailbox_name + EMAIL_DOMAIN
     else
       self.email = nil
     end

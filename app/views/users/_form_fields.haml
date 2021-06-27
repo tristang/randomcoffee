@@ -1,7 +1,7 @@
 - if user.errors.any?
   #error_explanation
     %h3
-      Uh oh… #{pluralize(user.errors.count, "problems")} need your attention.
+      #{pluralize(user.errors.count, "problems")} need your attention:
     %ul
       - user.errors.full_messages.each do |msg|
         %li= msg

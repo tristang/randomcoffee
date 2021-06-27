@@ -3,7 +3,10 @@ class User < ActiveRecord::Base
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :email, presence: true
+  validates :email,
+    presence: true,
+    format: { with: /\A([^@]+)@([^@]+)\z/, message: "isn't a valid email address", if: Proc.new { |u| u.email.present? } },
+    uniqueness: { case_sensitive: false }
   validates :department, presence: true
 
   scope :active, -> { where(inactive: false) }

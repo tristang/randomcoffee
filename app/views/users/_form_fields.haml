@@ -1,6 +1,6 @@
 - if user.errors.any?
   #error_explanation
-    %h3
+    %h4
       #{pluralize(user.errors.count, "problems")} need your attention:
     %ul
       - user.errors.full_messages.each do |msg|

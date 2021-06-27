@@ -1,9 +1,11 @@
 
-= form_for(@department, url: admin_department_path(@department), method: :put) do |f|
-  .form-group
-    = f.label :name
-    = f.text_field :name
+.row
+  .col-md-5
+    %p.lead Edit department
+    %hr
+    = form_for(@department, url: admin_department_path(@department), method: :put) do |f|
+      = render partial: 'form_fields', locals: { f: f }
 
-  = f.submit 'Save changes'
-  or
-  = link_to 'cancel', :back
+      = f.submit 'Save changes', class: 'btn btn-info'
+      or
+      = link_to 'cancel', :back

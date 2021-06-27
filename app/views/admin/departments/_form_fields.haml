@@ -1,0 +1,11 @@
+
+- if @department.errors.any?
+  #error_explanation
+    %h4
+      #{pluralize(@department.errors.count, "problems")} need your attention:
+    %ul
+      - @department.errors.full_messages.each do |msg|
+        %li= msg
+.form-group
+  = f.label :name
+  = f.text_field :name, class: 'form-control'

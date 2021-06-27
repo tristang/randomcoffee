@@ -1,0 +1,18 @@
+%p Hi #{@recipient.first_name},
+
+%p It's time for random acts of coffee!
+
+%p
+  Your pairing for this round is
+  %b
+    #{@partner.full_name}
+    from #{@partner.department.name}.
+
+%p
+  Please contact #{@partner.first_name} (#{mail_to @partner.email})
+  to arrange your catch-up.
+
+%p
+  Have fun,
+  %br
+  Customer Success team
